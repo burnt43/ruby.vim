@@ -1,3 +1,25 @@
+function! ruby#rubocop#AnalyzeFilename(filename)
+  let rubocop_execute_string = "rubocop " . a:filename
+
+  call ruby#OpenOrFocusBuffer('__Rubocop_Output__')
+
+  normal! ggdG
+
+  echom "[ruby.vim] rubocop analyzing: " . rubocop_execute_string
+
+  setlocal filetype=rubocopoutput
+  setlocal buftype=nofile
+
+  silent execute "read! " . rubocop_execute_string
+  normal! ggdd
+
+  call feedkeys("\<cr>")
+endfunction
+
+function! ruby#rubocop#AnalyzeBuffer()
+  call ruby#rubocop#AnalyzeFilename(fnamemodify(bufname("%"), ":p"))
+endfunction
+
 function! ruby#rubocop#AnalyzeLines(type)
   if a:type ==# 'V'
     let starting_line = line("'<")
@@ -16,19 +38,5 @@ function! ruby#rubocop#AnalyzeLines(type)
   endwhile
   redir end
 
-  let rubocop_execute_string = "rubocop " . rubocop_tmp_file
-
-  call ruby#OpenOrFocusBuffer('__Rubocop_Output__')
-
-  normal! ggdG
-
-  echom "[ruby.vim] rubocop analyzing: " . rubocop_execute_string
-
-  setlocal filetype=rubocopoutput
-  setlocal buftype=nofile
-
-  silent execute "read! " . rubocop_execute_string
-  normal! ggdd
-
-  call feedkeys("\<cr>")
+  call ruby#rubocop#AnalyzeFilename(rubocop_tmp_file)
 endfunction
