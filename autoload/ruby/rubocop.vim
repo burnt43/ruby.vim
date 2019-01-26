@@ -17,6 +17,7 @@ function! ruby#rubocop#AnalyzeFilename(filename)
 endfunction
 
 function! ruby#rubocop#AnalyzeBuffer()
+  write
   call ruby#rubocop#AnalyzeFilename(fnamemodify(bufname("%"), ":p"))
 endfunction
 
