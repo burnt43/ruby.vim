@@ -12,8 +12,8 @@ endfunction
 
 function! ruby#InsertThousandSeparators(type)
   if a:type ==# 'v'
-    echom col("`<")
-    echom col("`>")
+    echom col("'<")
+    echom col("'>")
   else
     return 1
   end
