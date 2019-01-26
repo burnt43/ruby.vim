@@ -6,12 +6,12 @@ function! ruby#rubocop#AnalyzeLines(type)
     return 1
   end
 
-  let rubocop_tmp_file = '/home/jcarson/tmp/test.txt'
+  let rubocop_tmp_file = '/home/jcarson/tmp/.rubocop.rb'
   let current_line     = starting_line
 
   execute "redir! > " . rubocop_tmp_file
   while current_line <= ending_line
-    silent echon getline(current_line)
+    silent echon getline(current_line) . "\r\n"
     let current_line += 1
   endwhile
   redir end
