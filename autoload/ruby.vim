@@ -16,8 +16,14 @@ function! ruby#InsertThousandSeparators(type)
     let ending_column   = col("'>")
 
     if ending_column - starting_column >= 3
-      call cursor(line("."), ending_column)
-      normal! 2hi_\<esc>
+      let current_column = ending_column - 2
+
+      while current_column > starting_column
+        call cursor(line("."), current_column)
+        execute "normal! i_" . \<esc>
+
+        let current_column -= 2
+      endwhile
     endif
   else
     return 1
