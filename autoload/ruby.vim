@@ -12,8 +12,13 @@ endfunction
 
 function! ruby#InsertThousandSeparators(type)
   if a:type ==# 'v'
-    echom col("'<")
-    echom col("'>")
+    let starting_column = col("'<")
+    let ending_column   = col("'>")
+
+    if ending_column - starting_column >= 3
+      call cursor(line("."), ending_column)
+      normal! 3hi_<esc>
+    endif
   else
     return 1
   end
