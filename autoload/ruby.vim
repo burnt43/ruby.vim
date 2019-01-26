@@ -22,7 +22,7 @@ function! ruby#InsertThousandSeparators(type)
         call cursor(line("."), current_column)
         execute "normal! i_" . "\<esc>"
 
-        let current_column -= 2
+        let current_column -= 3
       endwhile
     endif
   else
