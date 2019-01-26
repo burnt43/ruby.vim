@@ -9,11 +9,3 @@ function! ruby#OpenOrFocusBuffer(buffer_name)
     return 1
   endif
 endfunction
-
-function! ruby#YankText(type)
-  if a:type ==# 'V'
-    normal! `<V`>y
-  else
-    return 1
-  endif
-endfunction
