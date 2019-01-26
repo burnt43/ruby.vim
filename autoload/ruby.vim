@@ -14,18 +14,21 @@ function! ruby#InsertThousandSeparators(type)
   if a:type ==# 'v'
     let starting_column = col("'<")
     let ending_column   = col("'>")
-
-    if ending_column - starting_column >= 3
-      let current_column = ending_column - 2
-
-      while current_column > starting_column
-        call cursor(line("."), current_column)
-        execute "normal! i_" . "\<esc>"
-
-        let current_column -= 3
-      endwhile
-    endif
+  else if a:type ==# 'char'
+    let starting_column = col("'[")
+    let ending_column   = col("']")
   else
     return 1
   end
+
+  if ending_column - starting_column >= 3
+    let current_column = ending_column - 2
+
+    while current_column > starting_column
+      call cursor(line("."), current_column)
+      execute "normal! i_" . "\<esc>"
+
+      let current_column -= 3
+    endwhile
+  endif
 endfunction
