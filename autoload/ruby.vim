@@ -35,7 +35,7 @@ endfunction
 
 function! ruby#ChangeDoubleQuoteToSingleQuote(type)
   if a:type ==# 'v'
-   execute  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<"|%' . "'" . '>")/' . "'" . '/'
+   execute  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<"|%' . "'" . '>")/' . "'" . '/' . "\<cr>"
   else
     return 1
   endif
