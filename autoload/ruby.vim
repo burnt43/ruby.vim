@@ -19,7 +19,7 @@ function! ruby#InsertThousandSeparators(type)
     let ending_column   = col("']")
   else
     return 1
-  end
+  endif
 
   if ending_column - starting_column >= 3
     let current_column = ending_column - 2
@@ -30,5 +30,13 @@ function! ruby#InsertThousandSeparators(type)
 
       let current_column -= 3
     endwhile
+  endif
+endfunction
+
+function! ruby#ChangeDoubleQuoteToSingleQuote(type)
+  if a:type ==# 'v'
+   execute  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<"|%' . "'" . '>")/' . "'" . '/'
+  else
+    return 1
   endif
 endfunction
