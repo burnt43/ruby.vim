@@ -6,12 +6,29 @@ function! ruby#rubocop#AnalyzeLines(type)
     return 1
   end
 
-  let current_line = starting_line
+  let rubocop_tmp_file = '/home/jcarson/tmp/test.txt'
+  let current_line     = starting_line
 
-  redir! > /home/jcarson/tmp/test.txt
+  execute "redir! > " . rubocop_tmp_file
   while current_line <= ending_line
-    silent echom getline(current_line)
+    silent echon getline(current_line)
     let current_line += 1
   endwhile
   redir end
+
+  let rubocop_execute_string = "rubocop " . rubocop_tmp_file
+
+  call ruby#OpenOrFocusBuffer('__Rubocop_Output__')
+
+  normal! ggdG
+
+  echom "[ruby.vim] rubocop analyzing: " . rubocop_execute_string
+
+  setlocal filetype=rubocopoutput
+  setlocal buftype=nofile
+
+  silent execute "read! " . rubocop_execute_string
+  normal! ggdd
+
+  call feedkeys("\<cr>")
 endfunction
