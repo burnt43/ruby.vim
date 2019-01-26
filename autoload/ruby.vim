@@ -41,11 +41,15 @@ function! ruby#ChangeDoubleQuoteToSingleQuote(type)
 
     let starting_line = line("'<")
     let ending_line   = line("'>")
+  elseif a:type ==# 'char'
+    let starting_column = col("'[")
+    let ending_column   = col("']")
+
+    let starting_line = line("'[")
+    let ending_line   = line("']")
   else
     return 1
   endif
 
-  echom 'normal! :' . starting_line . ',' . ending_line . 's/\v(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
   execute 'normal! :' . starting_line . ',' . ending_line . 's/\v(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
-  " execute  'normal! :' . "\<c-u>" . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<\s+\zs"\ze|%' . "'" . '>\zs"\ze)/' . "'" . '/g' . "\<cr>"
 endfunction
