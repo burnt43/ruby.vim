@@ -34,8 +34,10 @@ function! ruby#InsertThousandSeparators(type)
 endfunction
 
 function! ruby#ChangeDoubleQuoteToSingleQuote(type)
+  echom a:type
   if a:type ==# 'v'
-   execute  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<"|%' . "'" . '>")/' . "'" . '/' . "\<cr>"
+   echom  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<\s+\zs"\ze|%' . "'" . '>")/' . "'" . '/' . "\<cr>"
+   execute  'normal! ' . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<\s+\zs"\ze|%' . "'" . '>")/' . "'" . '/' . "\<cr>"
   else
     return 1
   endif
