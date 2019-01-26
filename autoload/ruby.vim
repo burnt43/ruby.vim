@@ -9,3 +9,12 @@ function! ruby#OpenOrFocusBuffer(buffer_name)
     return 1
   endif
 endfunction
+
+function! ruby#InsertThousandSeparators(type)
+  if a:type ==# 'v'
+    echom col("`<")
+    echom col("`>")
+  else
+    return 1
+  end
+endfunction
