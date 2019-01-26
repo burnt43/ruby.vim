@@ -14,7 +14,7 @@ function! ruby#InsertThousandSeparators(type)
   if a:type ==# 'v'
     let starting_column = col("'<")
     let ending_column   = col("'>")
-  else if a:type ==# 'char'
+  elseif a:type ==# 'char'
     let starting_column = col("'[")
     let ending_column   = col("']")
   else
