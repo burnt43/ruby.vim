@@ -11,7 +11,7 @@ function! ruby#rubocop#AnalyzeLines(type)
 
   execute "redir! > " . rubocop_tmp_file
   while current_line <= ending_line
-    silent echon getline(current_line) . "\r\n"
+    silent echon getline(current_line) . "\n"
     let current_line += 1
   endwhile
   redir end
