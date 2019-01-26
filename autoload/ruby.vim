@@ -45,7 +45,7 @@ function! ruby#ChangeDoubleQuoteToSingleQuote(type)
     return 1
   endif
 
-  echom 'normal! :' . starting_line . ',' . ending_line . 's/(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
-  execute 'normal! :' . starting_line . ',' . ending_line . 's/(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
+  echom 'normal! :' . starting_line . ',' . ending_line . 's/\v(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
+  execute 'normal! :' . starting_line . ',' . ending_line . 's/\v(%' . starting_line . 'l%' . starting_column . 'c\s+\zs"\ze|%' . ending_line . 'l%' . ending_column . 'c\zs"\ze)/' . "'" . '/g' . "\<cr>"
   " execute  'normal! :' . "\<c-u>" . "'" . '<,' . "'" . '>s/\v(%' . "'" . '<\s+\zs"\ze|%' . "'" . '>\zs"\ze)/' . "'" . '/g' . "\<cr>"
 endfunction
