@@ -17,7 +17,7 @@ function! ruby#InsertThousandSeparators(type)
 
     if ending_column - starting_column >= 3
       call cursor(line("."), ending_column)
-      normal! 3hi_<esc>
+      normal! 2hi_\<esc>
     endif
   else
     return 1
