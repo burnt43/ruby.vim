@@ -10,16 +10,19 @@ syntax match rubocopLiteral '\vLiteral \zs\w+\ze'
 syntax match rubocopRedundantSelf '\vRedundant \zsself\ze detected'
 syntax match rubocopMultiLineCurlyBraces '\vAvoid using \zs\{\.\.\.\}\ze for multi-line blocks'
 
-syntax match rubocopHashLiteral1 '\vUse hash literal \zs\{\}\ze' 
-syntax match rubocopHashLiteral2 '\vinstead of \zsHash\.new\ze'
+syntax match rubocopStyleEmptyLiteral1 '\vUse hash literal \zs\{\}\ze' 
+syntax match rubocopStyleEmptyLiteral2 '\vinstead of \zsHash\.new\ze'
+
+syntax match rubocopStyleCommentedKeyword '\vDo not place comments on the same line as the \zsend\ze keyword'
 
 highlight link rubocopFilename Macro
 highlight link rubocopLetter Function
 highlight link rubocopOffense Keyword
 highlight link rubocopClean Exception
 
-highlight link rubocopLiteral Constant
-highlight link rubocopRedundantSelf Constant
-highlight link rubocopMultiLineCurlyBraces Constant
-highlight link rubocopHashLiteral1 Constant
-highlight link rubocopHashLiteral2 Constant
+highlight link rubocopLiteral Identifier
+highlight link rubocopRedundantSelf Identifier
+highlight link rubocopMultiLineCurlyBraces Identifier
+highlight link rubocopStyleEmptyLiteral1 Identifier
+highlight link rubocopStyleEmptyLiteral2 Identifier
+highlight link rubocopStyleCommentedKeyword Identifier
