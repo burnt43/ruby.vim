@@ -17,6 +17,8 @@ syntax match rubocopStyleEmptyLiteral2 '\vinstead of \zsHash\.new\ze'
 
 syntax match rubocopStyleCommentedKeyword '\vDo not place comments on the same line as the \zsend\ze keyword'
 
+syntax match rubocopLintAssignmentInCondition '\vUse \zs\=\=\ze if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition'
+
 highlight link rubocopFilename Macro
 highlight link rubocopLetter Function
 highlight link rubocopOffense Keyword
@@ -28,3 +30,4 @@ highlight link rubocopStyleBlockDelimiters Identifier
 highlight link rubocopStyleEmptyLiteral1 Identifier
 highlight link rubocopStyleEmptyLiteral2 Identifier
 highlight link rubocopStyleCommentedKeyword Identifier
+highlight link rubocopLintAssignmentInCondition Identifier
