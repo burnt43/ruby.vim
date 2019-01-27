@@ -17,6 +17,8 @@ syntax match rubocopStyleEmptyLiteral2 '\vinstead of \zsHash\.new\ze'
 
 syntax match rubocopStyleCommentedKeyword '\vDo not place comments on the same line as the \zsend\ze keyword'
 
+syntax match rubocopStyleFrozenStringLiteralComment '\v# frozen_string_literal: true'
+
 syntax match rubocopLintAssignmentInCondition '\vUse \zs\=\=\ze if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition'
 
 syntax match rubocopStyleLambda '\vUse the \zslambda\ze method for multiline lambdas'
@@ -34,3 +36,4 @@ highlight link rubocopStyleEmptyLiteral2 Identifier
 highlight link rubocopStyleCommentedKeyword Identifier
 highlight link rubocopLintAssignmentInCondition Identifier
 highlight link rubocopStyleLambda Identifier
+highlight link rubocopStyleFrozenStringLiteralComment Identifier
